@@ -9,10 +9,10 @@ class Conexion:
     def conectar(self):
         try:
             self.connection = mysql.connector.connect(
-                host="",
-                user="",
-                password='',
-                database=''
+                host='ls-139b40c46465996e42cf022f0199d0a34bb0ab64.cnqmtkdkm8tk.ca-central-1.rds.amazonaws.com',
+                user='usuario',
+                password='DfP_51*_sA3',
+                database='planta'
             )
             if self.connection.is_connected():
                 self.cursor = self.connection.cursor()
@@ -21,7 +21,7 @@ class Conexion:
         except Error as e:
             print('Error en la conexión con la base de datos')
             return ('Error en la conexión con la base de datos' +'\n'+  str(e))
-
+    
     def insertarUsuario(self, humedad, fecha, hora):
         if self.connection.is_connected():
             self.cursor = self.connection.cursor()
