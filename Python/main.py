@@ -18,3 +18,6 @@ while True:
     if tiempo_transcurrido(hora_parametro):
         print("Ha transcurrido un minuto.")
         hora_parametro = datetime.datetime.now().time()
+        break
+    else:
+        print("no")

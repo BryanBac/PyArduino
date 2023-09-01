@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+import datetime
 
 def obtener_hora():
     now = datetime.datetime.now()
