@@ -6,11 +6,11 @@ class Conexion:
     def __init__(self):
         pass
 
-    def conectar(self, user, host):
+    def conectar(self):
         try:
             self.connection = mysql.connector.connect(
-                host=host,
-                user=user,
+                host="",
+                user="",
                 password='',
                 database=''
             )
