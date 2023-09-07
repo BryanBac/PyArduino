@@ -4,6 +4,21 @@ import LineChart from './lineChart'
 import DoughnutChart from './doughnut'
 import styles from '@/styles/Home.module.css'
 export default function Home() {
+  const mysql = require('mysql2');
+  const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    database: 'next',
+    password: 'Bile29'
+  });
+  connection.query(
+    'SELECT * FROM post',
+    function(err, results, fields) {
+      console.log("Retorno")
+      console.log(results); 
+      console.log(fields); 
+    }
+  );
   return (
     <>
       <Head>
