@@ -3,22 +3,40 @@ import BarChart from './barChart'
 import LineChart from './lineChart'
 import DoughnutChart from './doughnut'
 import styles from '@/styles/Home.module.css'
+import { useEffect, useState } from 'react'
 export default function Home() {
-  const mysql = require('mysql2');
-  const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    database: 'next',
-    password: 'Bile29'
-  });
-  connection.query(
-    'SELECT * FROM post',
-    function(err, results, fields) {
-      console.log("Retorno")
-      console.log(results); 
-      console.log(fields); 
+  const [data, setData] = useState()
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSeconds((prevSeconds) => prevSeconds + 1);
+    }, 5 * 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const activar = async () => {
+    const response = await fetch("/api/mysql", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data2 = await response.json();
+    setData(data2)
+    if (response.status !== 200) {
+      throw data2.error || new Error(`Request failed with status ${response.status}`);
     }
-  );
+  }
+
+  useEffect(() => {
+    activar()
+  }, [seconds])
+
+  useEffect(() => {
+    console.log("Data de bd", data)
+  }, [data])
+
   return (
     <>
       <Head>
