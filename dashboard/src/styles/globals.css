@@ -2,6 +2,10 @@ body{
     background: rgb(83,214,103);
     background: linear-gradient(90deg, rgba(83,214,103,1) 0%, rgba(103,170,54,1) 32%, rgba(35,104,187,1) 100%);}
 
+div {
+    margin-left: 20px;
+}   
+
 h2 {
     font-family:cursive;
     display: flex;
@@ -14,6 +18,6 @@ h3 {
     font-family:cursive;
     display: flex;
     justify-content: center;
-    font-size: 10px;
-    color: gray;
+    font-size: 13px;
+    color: rgb(103, 103, 103);
 }

@@ -10,6 +10,8 @@ ChartJS.register(
     Tooltip,
     Legend
 );
+import planta from "../img/Environment.png"
+import Image from 'next/image'
 import styles from '@/styles/chart.module.css'
 
 function DoughnutChart({valor}){
@@ -28,15 +30,16 @@ function DoughnutChart({valor}){
     const options = {
     }
     return(
-        <div className={styles.container} style={{width: '600px', height: '250px'}}>
+        <div className={styles.container} style={{width: '600px', height: '270px'}}>
             <h3>Estado Actual</h3>
-            <div style={{width: '600px', height: '200px'}}>
+            <div style={{width: '250px', height: '200px', display: 'flex', gap:'50px'}}>
                 <Doughnut
                 data ={data}
                 option = {options}>
                 </Doughnut>
+                <Image src={planta} alt="Imagen 1" width={300} height={240} className={styles.avatar}/>
             </div>
-        </div>
+       </div>
     )
 }
 

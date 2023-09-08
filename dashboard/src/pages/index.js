@@ -64,9 +64,13 @@ export default function Home() {
       </Head>
       <h2>Sensor de Húmedad</h2>
       <div className={styles.container}>
+        <div className={styles.containerSecondary}>
         <BarChart datos={data}></BarChart>
-        <LineChart datos={data}></LineChart>
         <DoughnutChart valor={actual}></DoughnutChart>
+        </div>
+        <div>
+          <LineChart datos={data}></LineChart>
+        </div>
       </div>
     </>
   )

@@ -4,4 +4,11 @@
     border-style: solid rgb(91, 93, 98);
     box-shadow: 5px 5px 5px rgb(156, 156, 156);
     padding: 15px;
+    height: 93%;
+    display: flex;
+    align-items: center;
+}
+
+.chart{
+    height: 600px;
 }

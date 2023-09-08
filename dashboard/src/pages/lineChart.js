@@ -33,7 +33,7 @@ function LineChart(props) {
                 borderColor: 'rgb(0,255,0,0.3)',
                 pointCoderColor: 'rgb(0,255,0,0.3)',
                 fill: true,
-                tension: 0.4
+                tension: 0.8
             }
         ]
     }
@@ -48,7 +48,7 @@ function LineChart(props) {
         }
     }
     return (
-        <div className={styles.container} style={{ width: '600px', height: '230px' }}>
+        <div className={styles.container}>
             <Line
                 data={data}
                 options={options}
