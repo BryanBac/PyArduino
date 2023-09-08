@@ -11,12 +11,13 @@ ChartJS.register(
     Legend
 );
 import planta from "../img/Environment.png"
+import plantaChange from "../img/EnvironmentChange.png"
 import Image from 'next/image'
 import styles from '@/styles/chart.module.css'
 
 function DoughnutChart({valor}){
     let valores = []
-    if(valor>500){ valores = [0, 100] }
+    if(valor>500){ valores = [0, 100]}
     else{ valores= [100, 0] }
     const data = {
         labels: ['Húmedo', 'Seco'],
@@ -37,7 +38,12 @@ function DoughnutChart({valor}){
                 data ={data}
                 option = {options}>
                 </Doughnut>
-                <Image src={planta} alt="Imagen 1" width={300} height={240} className={styles.avatar}/>
+                {
+                    valor > 500 ?
+                    <Image src={plantaChange} alt="Imagen 1" width={300} height={240}/>
+                    :
+                    <Image src={planta} alt="Imagen 1" width={300} height={240}/>
+                }
             </div>
        </div>
     )
