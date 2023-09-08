@@ -4,8 +4,9 @@ import LineChart from './lineChart'
 import DoughnutChart from './doughnut'
 import styles from '@/styles/Home.module.css'
 import { useEffect, useState } from 'react'
+
 export default function Home() {
-  const [data, setData] = useState()
+  const [data, setData] = useState([])
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
@@ -29,8 +30,19 @@ export default function Home() {
     }
   }
 
+  const imprimir = () => {
+    if(data.length>0){
+      for (let i = 0; i<data.length; i++){
+        console.log("Humeda: ", data[i].humedad)
+        console.log("Fecha: ", data[i].fecha)
+        console.log("Hora: ", data[i].hora)
+      }
+    }
+  }
+
   useEffect(() => {
     activar()
+    imprimir()
   }, [seconds])
 
   useEffect(() => {
