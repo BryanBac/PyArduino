@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 export default function Home() {
   const [data, setData] = useState([])
   const [seconds, setSeconds] = useState(0);
+  const [actual, setActual] = useState()
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -36,6 +37,10 @@ export default function Home() {
         console.log("Humeda: ", data[i].humedad)
         console.log("Fecha: ", data[i].fecha)
         console.log("Hora: ", data[i].hora)
+        if(i===(data.length-1)){
+          setActual(data[i].humedad)
+          console.log("Valor actual: ", actual)
+        }
       }
     }
   }
@@ -61,7 +66,7 @@ export default function Home() {
       <div className={styles.container}>
         <BarChart></BarChart>
         <LineChart></LineChart>
-        <DoughnutChart></DoughnutChart>
+        <DoughnutChart valor={actual}></DoughnutChart>
       </div>
     </>
   )
