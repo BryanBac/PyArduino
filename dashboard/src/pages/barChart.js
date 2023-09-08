@@ -3,7 +3,17 @@ import { useEffect, useState } from 'react'
 import {Bar} from 'react-chartjs-2'
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 import styles from '@/styles/chart.module.css'
-export default function BarChart() {
+export default function BarChart(props) {
+  const { datos } = props
+  var humedo = 0;
+  var seco = 0;
+  for (let i = 0; i < datos.length; i++) {
+      if(datos[i].humedad<500){
+        humedo = humedo +1
+      }else{
+        seco = seco +1
+      }
+  }
   const [chartData, setChartData ] = useState({
     datasets: []
   })
@@ -16,9 +26,9 @@ export default function BarChart() {
       datasets: [
         {
           label: 'Número de lecturas',
-          data: [14, 25],
-          borderColor: 'rgb(119,221,119)',
-          backgroundColor: 'rgb(119,221,119)'
+          data: [seco, humedo],
+          borderColor: ['gray', 'rgb(119,221,119)'],
+          backgroundColor: ['gray', 'rgb(119,221,119)']
         }
       ]
     })
@@ -29,7 +39,7 @@ export default function BarChart() {
         },
         title: {
           display: true,
-          text: 'Incidencia diaria'
+          text: 'Incidencia'
         }
       },
       maintainAspectRatio: false,
