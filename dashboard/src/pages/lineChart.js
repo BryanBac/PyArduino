@@ -1,7 +1,7 @@
-import {Line} from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
-    LineElement, 
+    LineElement,
     CategoryScale, //x
     LinearScale, //y
     PointElement
@@ -14,13 +14,21 @@ ChartJS.register(
     PointElement
 );
 
-function LineChart() {
+function LineChart(props) {
+    const { datos } = props
+    var horas = []
+    var humedades = []
+    for (let i = 0; i < datos.length; i++) {
+        horas.push(datos[i].hora)
+        humedades.push(datos[i].humedad)
+    }
+    
     const data = {
-        labels: ['18:00', '19:00', '20:00', '21:00'],
+        labels: horas,
         datasets: [
             {
                 label: 'Húmedad detectada',
-                data: [3, 8 , -1, 2],
+                data: humedades,
                 backgroundColor: 'rgb(0,255,0,0.3)',
                 borderColor: 'rgb(0,255,0,0.3)',
                 pointCoderColor: 'rgb(0,255,0,0.3)',
@@ -39,11 +47,11 @@ function LineChart() {
             }
         }
     }
-    return(
-        <div className={styles.container} style={{width: '600px', height: '230px'}}>
+    return (
+        <div className={styles.container} style={{ width: '600px', height: '230px' }}>
             <Line
-            data= {data}
-            options = {options}
+                data={data}
+                options={options}
             ></Line>
         </div>
 
